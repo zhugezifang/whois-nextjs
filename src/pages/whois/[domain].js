@@ -38,7 +38,7 @@ export async function getServerSideProps(context) {
 
     if (domain) {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/whois?domain=${domain}`);
+            const res = await fetch(`https://whois-nextjs-five.vercel.app/api/whois?domain=${domain}`);
             domainInfo = await res.json();
         } catch (err) {
             console.error("Error fetching domain info:", err);
