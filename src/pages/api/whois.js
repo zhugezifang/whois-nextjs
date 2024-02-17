@@ -15,33 +15,21 @@ export default async function handler(req, res) {
 
     // 缓存中没有数据，继续查询外部API
     const [name, suffix] = domain.split(".");
-    //const apiUrl = `https://whois.freeaiapi.xyz/?name=${name}&suffix=${suffix}`;
+    const apiUrl = `https://whois.freeaiapi.xyz/?name=${name}&suffix=${suffix}`;
 
-    // 替换为你的API密钥
-    const apiKey = 'YOUR_API_KEY';
-
-    // 构建请求URL和头部信息
-    const url = 'https://api.tigerbot.com/v1/chat/completions';
-    const headers = {
-    'Authorization': `Bearer 9ab21d2b1878613137b9ea44b4d02328f23855a405f332670a38d2ea27047a88`,
-    'Content-Type': 'application/json'
-    };
-
-    // 构建请求体数据
-    const data = {
-    "model": "tigerbot-70b-chat",
-    "query": domain
+    var options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
     };
 
     try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify(data)
-        });
+        const response = await fetch('https://aip.baidubce.com/oauth/2.0/token?client_id=2NKUxy61vnt6VuO1G05jYHsi&client_secret=Uga7yw0jH04srKZOFhwxXgrZKQrQ7Too&grant_type=client_credentials', options);
         //const response = await fetch(apiUrl);
         const data = await response.json();
-
+        console.log(data);
         // 将数据存储到缓存中
         myCache.set(domain, data);
 
