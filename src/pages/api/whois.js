@@ -30,10 +30,37 @@ export default async function handler(req, res) {
         //const response = await fetch(apiUrl);
         const data = await response.json();
         console.log(data);
-        // 将数据存储到缓存中
-        myCache.set(domain, data);
+        const token=data.access_token;
+        console.log("token:"+token);
+        const chatUrl="https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions_pro?access_token="+token;
+        var options = {
+            'method': 'POST',
+            'headers': {
+                    'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                    "messages": [
+                            {
+                                    "role": "user",
+                                    "content": domain
+                            }
+                    ],
+                    "disable_search": false,
+                    "enable_citation": false
+            })
+    
+        };
 
-        res.status(200).json(data);
+
+        const response2 = await fetch(chatUrl, options);
+        //const response = await fetch(apiUrl);
+        const data2 = await response2.json();
+        console.log("data2:"+data2);
+        
+        // 将数据存储到缓存中
+        myCache.set(domain, data2);
+
+        res.status(200).json(data2);
     } catch (error) {
         res.status(500).json({ error: "服务器错误，无法获取域名信息" });
     }
