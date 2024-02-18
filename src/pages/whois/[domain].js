@@ -16,8 +16,6 @@ export default function Whois({ domainInfo, error }) {
             {domainInfo && (
                 <Box p={4} borderWidth="1px" borderRadius="lg">
                     <Text><b>域名:</b> {domainInfo.result}</Text>
-                    <Text><b>详细信息:</b></Text>
-                    <Text whiteSpace="pre-wrap">{domainInfo.result}</Text>
                 </Box>
             )}
         </Flex>
@@ -32,8 +30,8 @@ export async function getServerSideProps(context) {
     if (domain) {
         try {
             const res = await fetch(`https://whois-nextjs-five.vercel.app/api/whois?domain=${domain}`);
-            console.log(res.json());
             domainInfo = await res.json();
+            console.log("result:"+domainInfo.result);
         } catch (err) {
             console.error("Error fetching domain info:", err);
             error = "无法获取域名信息，请稍后重试。";
