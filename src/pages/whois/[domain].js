@@ -15,16 +15,9 @@ export default function Whois({ domainInfo, error }) {
             <Text fontSize="xl" mb={2}>域名信息查询结果</Text>
             {domainInfo && (
                 <Box p={4} borderWidth="1px" borderRadius="lg">
-                    <Text><b>域名:</b> {domainInfo.domain}</Text>
-                    <Text><b>是否可注册:</b> {domainInfo.available ? "是" : "否"}</Text>
-                    {domainInfo.creation_datetime && (
-                        <Text><b>创建时间:</b> {domainInfo.creation_datetime}</Text>
-                    )}
-                    {domainInfo.expiry_datetime && (
-                        <Text><b>过期时间:</b> {domainInfo.expiry_datetime}</Text>
-                    )}
+                    <Text><b>域名:</b> {domainInfo.result}</Text>
                     <Text><b>详细信息:</b></Text>
-                    <Text whiteSpace="pre-wrap">{domainInfo.info}</Text>
+                    <Text whiteSpace="pre-wrap">{domainInfo.result}</Text>
                 </Box>
             )}
         </Flex>
