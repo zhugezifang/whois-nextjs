@@ -31,7 +31,7 @@ export default async function handler(req, res) {
         const data = await response.json();
         const token=data.access_token;
         console.log("token:"+token);
-        const chatUrl="https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions_pro?access_token="+token;
+        const chatUrl="https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/yi_34b_chat?access_token="+token;
         var options = {
             'method': 'POST',
             'headers': {
