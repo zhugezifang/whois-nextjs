@@ -29,7 +29,6 @@ export default async function handler(req, res) {
         const response = await fetch('https://aip.baidubce.com/oauth/2.0/token?client_id=2NKUxy61vnt6VuO1G05jYHsi&client_secret=Uga7yw0jH04srKZOFhwxXgrZKQrQ7Too&grant_type=client_credentials', options);
         //const response = await fetch(apiUrl);
         const data = await response.json();
-        console.log("data:"+data);
         const token=data.access_token;
         console.log("token:"+token);
         const chatUrl="https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions_pro?access_token="+token;
@@ -55,7 +54,7 @@ export default async function handler(req, res) {
         const response2 = await fetch(chatUrl, options);
         //const response = await fetch(apiUrl);
         const data2 = await response2.json();
-        console.log("data2:"+data2);
+        console.log("result:"+data2.result);
         
         // 将数据存储到缓存中
         myCache.set(domain, data2);
