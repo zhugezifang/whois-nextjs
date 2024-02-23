@@ -20,7 +20,7 @@ export default function Home() {
             align="center"
             height="100vh"
         >
-            <Heading mb={4}>域名搜索</Heading>
+            <Heading mb={4}>AI导购</Heading>
             <Flex
                 justify="center"
                 align="center"
@@ -28,7 +28,7 @@ export default function Home() {
                 gap="2"
             >
                 <Input
-                    placeholder="输入域名"
+                    placeholder="请输入内容"
                     value={domain}
                     // 当输入框的值改变时，更改 domain 的值
                     onChange={(e) => setDomain(e.target.value)}

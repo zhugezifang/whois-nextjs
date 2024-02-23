@@ -12,10 +12,10 @@ export default function Whois({ domainInfo, error }) {
 
     return (
         <Flex direction="column" align="center" p={5}>
-            <Text fontSize="xl" mb={2}>域名信息查询结果</Text>
+            <Text fontSize="xl" mb={2}>你应该需要买这些东西</Text>
             {domainInfo && (
                 <Box p={4} borderWidth="1px" borderRadius="lg">
-                    <Text><b>域名:</b> {domainInfo.result}</Text>
+                    <Text><b>推荐的商品:</b> {domainInfo.result}</Text>
                 </Box>
             )}
         </Flex>
