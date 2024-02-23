@@ -1,6 +1,8 @@
 import NodeCache from "node-cache";
 const myCache = new NodeCache({ stdTTL: 86400 }); // 缓存24小时
 
+export const maxDuration = 300;
+
 export default async function handler(req, res) {
     const { domain } = req.query;
     if (!domain) {
