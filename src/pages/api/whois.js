@@ -14,9 +14,9 @@ export default async function handler(req, res) {
     }
 
     // 缓存中没有数据，继续查询外部API
-    const [name, suffix] = domain.split(".");
-    const apiUrl = `https://whois.freeaiapi.xyz/?name=${name}&suffix=${suffix}`;
-
+    //const [name, suffix] = domain.split(".");
+    //const apiUrl = `https://whois.freeaiapi.xyz/?name=${name}&suffix=${suffix}`;
+    const prompt="根据下面的描述内容，推荐关联性比较强的2个电商的商品："+domain;
     var options = {
         method: 'POST',
         headers: {
@@ -41,7 +41,7 @@ export default async function handler(req, res) {
                     "messages": [
                             {
                                     "role": "user",
-                                    "content": domain
+                                    "content": prompt
                             }
                     ],
                     "disable_search": false,
